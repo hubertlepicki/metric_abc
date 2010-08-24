@@ -1,0 +1,23 @@
+Metric ABC
+==========
+
+This little tool calculates ABC metric for your Ruby code. Requires Ruby 1.9 but should work more or less with sources compatible with 1.9 and 1.8.
+
+Installation
+============
+
+$ gem install metric_abc
+
+Usage
+=====
+
+    $ metric_abc filename1 [filename2] ...
+
+Understanding output
+====================
+
+Output from metric_abc is in form of:
+
+    /path/to/file.rb#Module1#Module2#ClassName#method_name: SCORE
+
+where SCORE is a number. The higher SCORE is, the more crazy code is. If a method scores above 20, it very likely needs some refactoring because it's complete shit.
