@@ -45,6 +45,6 @@ class MetricABC
   end
 
   def calculate_conditions(node, sum=0)
-    node.flatten.select{|n| [:==, :===, :"<>", :"<=", :">=", :"=~", :>, :<, :else].include?(n)}.size.to_f 
+    node.flatten.select{|n| [:==, :===, :"<>", :"<=", :">=", :"=~", :>, :<, :else, :"<=>"].include?(n)}.size.to_f 
   end
 end

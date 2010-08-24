@@ -7,6 +7,6 @@ if ARGV.empty?
 end
 
 metrics = MetricABC.new(ARGV[0])
-metrics.complexity.each do |function, score|
+metrics.complexity.sort{|a,b| b[1]<=>a[1]}.each do |function, score|
  puts "#{function}: #{score}"
 end
