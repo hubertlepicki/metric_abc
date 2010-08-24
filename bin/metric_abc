@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require File.join(File.dirname(__FILE__), "..", "lib", 'metric_abc')
+
+if ARGV.empty?
+  puts "USAGE:\nmetric_abc filename"
+end
+
+metrics = MetricABC.new(ARGV[0])
+metrics.complexity.each do |function, score|
+ puts "#{function}: #{score}"
+end
