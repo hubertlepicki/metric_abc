@@ -21,3 +21,9 @@ Output from metric_abc is in form of:
     /path/to/file.rb#Module1#Module2#ClassName#method_name: SCORE
 
 where SCORE is a number. The higher SCORE is, the more crazy code is. If a method scores above 20, it very likely needs some refactoring because it's complete shit.
+
+TODO:
+=====
+
+- method is not always properly recognized, sometimes it's full of shit like #@const#1#5#@const etc. Need to look at AST to figure out what's wrong
+
