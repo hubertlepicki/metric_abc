@@ -18,15 +18,17 @@ Gem::Specification.new do |s|
     "README"
   ]
   s.files = [
-    "README",
+    ".gitignore",
+     "README",
      "Rakefile",
      "VERSION",
      "bin/metric_abc",
      "lib/metric_abc.rb",
+     "metric_abc.gemspec",
      "spec/fixtures/example.rb",
      "spec/fixtures/not_valid.rb",
-     "spec/spec_helper.rb",
-     "spec/unit/metric_abc_spec.rb"
+     "spec/functional/metric_abc_spec.rb",
+     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/hubertlepicki/metric_abc}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -36,8 +38,8 @@ Gem::Specification.new do |s|
   s.test_files = [
     "spec/fixtures/example.rb",
      "spec/fixtures/not_valid.rb",
-     "spec/unit/metric_abc_spec.rb",
-     "spec/spec_helper.rb"
+     "spec/spec_helper.rb",
+     "spec/functional/metric_abc_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
