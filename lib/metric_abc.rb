@@ -20,9 +20,13 @@ class MetricABC
      
     if node[0] == :def
       @nesting << node[1][1]
-      @complexity[@nesting.join("#")] = calculate_abc(node)
-    elsif node[0] == :class || node[0] == :const
-      @nesting << node[1][1][1]
+      @complexity[@nesting.join(" > ")] = calculate_abc(node)
+    elsif node[0] == :class || node[0] == :module
+      if node[1][1][1].is_a? Symbol
+        @nesting << node[1][1][1]
+      else
+        @nesting << node[1][-1][1]
+      end
     end  
 
     node[1..-1].each { |n| process_ast(n) if n } if node.is_a? Array

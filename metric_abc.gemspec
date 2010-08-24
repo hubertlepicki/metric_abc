@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{metric_abc}
-  s.version = "0.0.1"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Hubert Lepicki"]
@@ -36,9 +36,9 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Quick and *DIRTY* ABC metric for Ruby 1.9 code}
   s.test_files = [
-    "spec/fixtures/example.rb",
+    "spec/spec_helper.rb",
      "spec/fixtures/not_valid.rb",
-     "spec/spec_helper.rb",
+     "spec/fixtures/example.rb",
      "spec/functional/metric_abc_spec.rb"
   ]
 
