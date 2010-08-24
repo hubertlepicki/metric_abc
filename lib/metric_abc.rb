@@ -10,7 +10,7 @@ class MetricABC
     end  
     return if @ast.empty?
     @complexity = {}
-    @nesting = []
+    @nesting = [file_name]
     process_ast(@ast)
     pp @ast if ENV["DEBUG"]
   end 
@@ -22,7 +22,7 @@ class MetricABC
       @nesting << node[1][1]
       @complexity[@nesting.join("#")] = calculate_abc(node)
     elsif node[0] == :class || node[0] == :module
-      @nesting << node[1][1][1]
+      @nesting << node[1][1][1] unless node[1][1][1] == "@const" # todo: find out what is this @const
     end  
 
     node[1..-1].each { |n| process_ast(n) if n } if node.is_a? Array
@@ -33,7 +33,8 @@ class MetricABC
     a = calculate_assignments(method_node)
     b = calculate_branches(method_node)
     c = calculate_conditions(method_node)
-    Math.sqrt(a**2 + b**2 + c**2).round
+    abc = Math.sqrt(a**2 + b**2 + c**2).round
+    abc
   end
 
   def calculate_assignments(node)
