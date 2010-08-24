@@ -1,4 +1,5 @@
 require 'ripper'
+require 'pp' if ENV["DEBUG"]
 
 class MetricABC
   attr_accessor :ast, :complexity
@@ -11,6 +12,7 @@ class MetricABC
     @complexity = {}
     @nesting = []
     process_ast(@ast)
+    pp @ast if ENV["DEBUG"]
   end 
 
   def process_ast(node)
@@ -35,11 +37,11 @@ class MetricABC
   end
 
   def calculate_assignments(node)
-    node.flatten.select{|n| [:assign, :+@, :-@, :"*@", :"/@"].include?(n)}.size.to_f
+    node.flatten.select{|n| [:assign, :opassign].include?(n)}.size.to_f
   end
 
   def calculate_branches(node)
-    node.flatten.select{|n| [:call, :fcall, :brace_block].include?(n)}.size.to_f + 1.0
+    node.flatten.select{|n| [:call, :fcall, :brace_block, :do_block].include?(n)}.size.to_f + 1.0
   end
 
   def calculate_conditions(node, sum=0)

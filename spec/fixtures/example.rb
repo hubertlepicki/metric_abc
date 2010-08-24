@@ -5,7 +5,14 @@ end
 module Test
   class Test2
     def class_in_module_function
+      a=1
+      b=2
+      a += 1
+      b *= 2
       5
+      [1,2,3].each do |element|
+        puts element
+      end
     end
   end
 end
