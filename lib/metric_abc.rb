@@ -21,8 +21,8 @@ class MetricABC
     if node[0] == :def
       @nesting << node[1][1]
       @complexity[@nesting.join("#")] = calculate_abc(node)
-    elsif node[0] == :class || node[0] == :module
-      @nesting << node[1][1][1] unless node[1][1][1] == "@const" # todo: find out what is this @const
+    elsif node[0] == :class || node[0] == :const
+      @nesting << node[1][1][1]
     end  
 
     node[1..-1].each { |n| process_ast(n) if n } if node.is_a? Array
